@@ -1,0 +1,82 @@
+/* ===================================================================
+   components.css — one reusable pattern: the entry.
+
+   .entry        a ledger row (system, paper, patent, role)
+   .entry-head   title left, registry id right
+   .entry-id     mono metadata (year, patent no., arXiv id)
+   Everything on the page is built from this one component.
+=================================================================== */
+
+.entry {
+  padding-block: 1.35rem;
+  border-top: 1px solid var(--rule);
+}
+.entry:first-of-type { border-top: none; padding-top: 0.2rem; }
+
+.entry-head {
+  display: flex; align-items: baseline; gap: 1rem;
+  justify-content: space-between; flex-wrap: wrap;
+}
+.entry-title {
+  font-family: var(--font-serif);
+  font-size: 1.08rem; font-weight: 600;
+}
+.entry-id {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; color: var(--ink-3);
+  white-space: nowrap;
+}
+
+/* registry-first entries (patents): the identifier IS the title */
+.entry-title--id {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.entry-id a { color: var(--ink-3); }
+.entry-id a:hover { color: var(--accent); }
+
+.entry-sub  { color: var(--ink-2); font-size: 0.88rem; margin: 0.15rem 0 0; }
+.entry-note { color: var(--ink-2); font-size: 0.92rem; margin: 0.55rem 0 0; }
+.entry-tags {
+  font-family: var(--font-mono);
+  font-size: 0.74rem; color: var(--ink-3);
+  margin-top: 0.6rem;
+}
+.entry-links { margin-top: 0.5rem; display: flex; gap: 1.2rem; }
+.entry-links a { font-family: var(--font-mono); font-size: 0.78rem; }
+
+/* authors line — the site owner's name in ink, co-authors muted */
+.entry-authors { font-size: 0.88rem; color: var(--ink-2); margin: 0.3rem 0 0; }
+.entry-authors b { color: var(--ink); font-weight: 600; }
+
+/* ---- experience phases (a real sequence, so it reads as one) ---- */
+.phases { margin-top: 1rem; display: grid; gap: 0.9rem; }
+.phases dt {
+  font-size: 0.9rem; font-weight: 600; color: var(--ink);
+}
+.phases dd { color: var(--ink-2); font-size: 0.92rem; margin-top: 0.1rem; }
+
+/* ---- definition rows (skills, education) ---- */
+.def-row {
+  display: grid; grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 1.2rem; padding-block: 0.7rem;
+  border-top: 1px solid var(--rule);
+}
+.def-row:first-of-type { border-top: none; padding-top: 0; }
+.def-row dt {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.02em;
+  color: var(--ink-3); padding-top: 0.15rem;
+}
+.def-row dd { color: var(--ink-2); font-size: 0.92rem; }
+
+@media (max-width: 560px) {
+  .def-row { grid-template-columns: 1fr; gap: 0.15rem; }
+  .entry-head { flex-direction: column; gap: 0.15rem; }
+}
+
+/* ---- contact ---- */
+.contact-line { font-size: 1rem; color: var(--ink-2); max-width: 46ch; }
+.contact-links { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.2rem; }
+.contact-links a { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500; }
